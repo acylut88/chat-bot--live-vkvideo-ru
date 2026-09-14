@@ -1,44 +1,40 @@
 # Контекст и архитектура проекта «Танковый Синдикат»
 
-## Текущий Спринт: Рефакторинг структуры под стандарт Clean Architecture (TS-1.5)
-**Статус:** В разработке
+## Текущий Спринт: Разработка асинхронной инфраструктуры БД (TS-2)
+**Статус:** В разработке (In Progress)
+**Текущая ветка:** `feature/TS-2-database-models`
 
-## Структура файлов проекта
+## Структура файлов проекта (Текущее состояние)
 ├── .gitignore              # Исключения Git
 ├── STANDARDS.md            # Набор корпоративных стандартов разработки
 ├── CONTEXT.md              # Данный файл (Слепок контекста)
-├── main.py                 # ЕДИНСТВЕННАЯ точка входа в корне проекта
+├── main.py                 # Единственная точка входа в корне проекта
+├── .env                    # [Локальный] Переменные окружения (секреты, URL базы)
 ├── tests/                  # Папка для всех тестов и симуляций
-│   └── test_logic.py       
-└── src/                    # Основной пакет приложения
+│   ├── test_logic.py       # Тесты математического ядра лутбоксов
+│   └── test_db.py          # [Будет создан] Тесты инициализации и связей БД
+└── src/                    # Основной пакет исходного кода приложения
     ├── __init__.py         
     ├── core/               
     │   ├── __init__.py     
-    │   └── config.py       # Изолированная конфигурация
+    │   ├── config.py       # Конфигурация проекта (Pydantic-Settings, RewardMode)
+    │   └── db.py           # [Будет создан] Асинхронный движок и фабрика сессий БД
+    ├── models/             
+    │   ├── __init__.py     
+    │   └── database.py     # [Будет создан] Декларативные модели таблиц SQLAlchemy 2.0
     └── services/           
         ├── __init__.py     
-        └── lootbox.py      # Переименованный logic.py (Математическое ядро)
+        └── lootbox.py      # Математическое ядро лутбоксов (LootboxEngine)
 
+## Спецификация существующих модулей
 
-## Спецификация модулей, классов и данных
+### 1. Модуль: src/core/config.py
+*   **Класс:** `Settings(BaseSettings)` — Синглтон конфигурации `settings`.
+*   **Динамические поля:** `GLOBAL_BASE_REWARD` (int), `VIP_LOOT_MULTIPLIER` (float), `REWARD_SYSTEM_MODE` (Literal["ABSOLUTE_MAX", "TOTAL_ACCUMULATIVE", "STEP_ACCUMULATIVE"]), `DATABASE_URL` (str), `VK_VIDEO_API_URL` (str).
+*   **Константные матрицы:** `TIER_CONFIG` (бонусы к луту и шансам тиров), `BASE_CHANCES` (базовые шансы шагов 1-6), `STEP_MULTIPLIERS` (прогрессия наград шагов 1-6).
 
-### 1. Модуль: config.py
-*   **Класс/Структура:** `LootboxTierConfig`, `LootboxChancesConfig`
-*   **Назначение:** Хранение множителей наград, базовых шансов, лимитов открытий.
-
-### 2. Модуль: logic.py
+### 2. Модуль: src/services/lootbox.py
 *   **Класс:** `LootboxEngine`
-    *   `__init__(self, config)`: Принимает конфигурацию.
-    *   `calculate_drop(box_type: str, is_vip: bool, current_opens: int) -> dict`: Расчет цепочки из 6 шагов.
-        *   *Вход:* `box_type` (str: cheap/normal/elite), `is_vip` (bool), `current_opens` (int).
-        *   *Выход:* `dict` (`success`, `box_name`, `user_tier`, `step_reached`, `is_exploded`, `reward_al`, `error`).
-    *   `_calculate_reward_amount(...)`: Внутренний метод подсчета AL по формуле "Мягкого фарма".
-
-### Модуль: src/core/config.py
-*   **Класс:** `Settings(BaseSettings)`
-*   **Поля:** `REWARD_SYSTEM_MODE` (str), `GLOBAL_BASE_REWARD` (int), сетевые доступы.
-
-### Модуль: src/services/lootbox.py
-*   **Класс:** `LootboxEngine`
-*   *Метод:* `simulate_chain(box_type: str, is_vip: bool) -> dict` — чистая симуляция 6 шагов одного бокса.
-*   *Метод:* `process_stream_rewards(box_logs: list, mode: str) -> int` — расчет итогового баланса AL на основе выбранного стримером режима.
+    *   `simulate_single_opening(box_type: str, is_vip: bool) -> dict`: Симуляция 6 шагов до первого взрыва. Возвращает сырой результат: `step_reached`, `is_exploded`, `reward_al`.
+    *   `aggregate_stream_rewards(box_results: list) -> int`: Агрегирует историю логов открытий за весь стрим и рассчитывает итоговый баланс AL по выбранному `REWARD_SYSTEM_MODE`.
+    *   `_calculate_box_reward(loot_mult, step_reached, is_vip) -> int`: Внутренний формульный расчет награды.
