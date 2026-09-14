@@ -33,3 +33,12 @@
         *   *Вход:* `box_type` (str: cheap/normal/elite), `is_vip` (bool), `current_opens` (int).
         *   *Выход:* `dict` (`success`, `box_name`, `user_tier`, `step_reached`, `is_exploded`, `reward_al`, `error`).
     *   `_calculate_reward_amount(...)`: Внутренний метод подсчета AL по формуле "Мягкого фарма".
+
+### Модуль: src/core/config.py
+*   **Класс:** `Settings(BaseSettings)`
+*   **Поля:** `REWARD_SYSTEM_MODE` (str), `GLOBAL_BASE_REWARD` (int), сетевые доступы.
+
+### Модуль: src/services/lootbox.py
+*   **Класс:** `LootboxEngine`
+*   *Метод:* `simulate_chain(box_type: str, is_vip: bool) -> dict` — чистая симуляция 6 шагов одного бокса.
+*   *Метод:* `process_stream_rewards(box_logs: list, mode: str) -> int` — расчет итогового баланса AL на основе выбранного стримером режима.
