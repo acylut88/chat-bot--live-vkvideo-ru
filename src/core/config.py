@@ -1,20 +1,21 @@
 from pathlib import Path
-from typing import Dict, Any, Literal
+from typing import Dict, Any, Literal, Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 RewardMode = Literal["ABSOLUTE_MAX", "TOTAL_ACCUMULATIVE", "STEP_ACCUMULATIVE"]
 
 class Settings(BaseSettings):
-    """
-    Глобальная конфигурация платформы.
-    Динамически собирает URL подключения к PostgreSQL из переменных окружения.
-    """
     # --- НАСТРОЙКИ ПОДКЛЮЧЕНИЯ К ПОСТГРЕСУ ---
     DB_USER: str = "postgres"
     DB_PASSWORD: str = "postgres"
     DB_HOST: str = "localhost"
     DB_PORT: int = 5432
     DB_NAME: str = "tank_syndicate"
+
+    # --- ОТЛАДОЧНЫЕ НАСТРОЙКИ WEBSOCKET (TS-3 MVP) ---
+    TEST_CENTRIFUGO_URL: str = "wss://pubsub-dev.live.vkvideo.ru/connection/websocket"
+    TEST_CENTRIFUGO_TOKEN: Optional[str] = None
+    TEST_CHAT_TOPIC: str = "channel_default_chat"
 
     # --- ИГРОВЫЕ НАСТРОЙКИ СТРИМЕРА ---
     GLOBAL_BASE_REWARD: int = 100
@@ -23,13 +24,11 @@ class Settings(BaseSettings):
     
     VK_VIDEO_API_URL: str = "https://vkvideo.ru"
     
-    # Использование свойства (property) позволяет получить готовую строку подключения на лету
     @property
     def DATABASE_URL(self) -> str:
-        """Собирает DSN строку с использованием асинхронного драйвера asyncpg."""
         return f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
     
-    # --- ИГРОВЫЕ КОНСТАНТЫ (МАТРИЦЫ) ---
+    # --- ИГРОВЫЕ КОНСТАНТЫ ---
     TIER_CONFIG: Dict[str, Dict[str, Any]] = {
         "cheap":  {"loot_mult": 1.00, "chance_bonus": 0.00, "label": "Тир-1 (50 БК)"},
         "normal": {"loot_mult": 1.10, "chance_bonus": 0.05, "label": "Тир-2 (250 БК)"},

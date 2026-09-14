@@ -1,14 +1,793 @@
-(.venv) PS D:\__projects\!chat_bot__live_vkvideo_ru> python main.py --test
-=== ЗАПУСК ЛОКАЛЬНЫХ ТЕСТОВ СИСТЕМЫ ЛУТБОКСОВ ===
+       ^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.IntegrityError: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
+[SQL: INSERT INTO user_channel_progress (vk_id, channel_id, ac_balance, is_vip, visit_streak, last_stream_id, last_active_at) VALUES ($1::BIGINT, $2::BIGINT, $3::INTEGER, $4::BOOLEAN, $5::INTEGER, $6::INTEGER, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING user_channel_progress.id]
+[parameters: (33615136, 888888, 0, False, 0, 0, datetime.datetime(2026, 9, 14, 20, 14, 16, 612677))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
 
-[Тест 1] Симуляция открытия Тир-1 (Обычный юзер):
-Результат: Успех=True, Шаг=2, Взрыв=True, Награда=150 AL
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: пожалуйста валер) | Слов: 2
+ERROR:SyndicateChatWorker:❌ КРИТИЧЕСКАЯ ОШИБКА ПАРСИНГА ПАКЕТА: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
+[SQL: INSERT INTO user_channel_progress (vk_id, channel_id, ac_balance, is_vip, visit_streak, last_stream_id, last_active_at) VALUES ($1::BIGINT, $2::BIGINT, $3::INTEGER, $4::BOOLEAN, $5::INTEGER, $6::INTEGER, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING user_channel_progress.id]
+[parameters: (20084797, 888888, 0, False, 0, 0, datetime.datetime(2026, 9, 14, 20, 14, 16, 694398))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+ERROR:SyndicateChatWorker:Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 550, in _prepare_and_execute
+    self._rows = deque(await prepared_stmt.fetch(*parameters))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 177, in fetch
+    data = await self.__bind_execute(args, 0, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 268, in __bind_execute
+    data, status, _ = await self.__do_execute(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda protocol: protocol.bind_execute(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            self._state, args, '', limit, True, timeout))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 257, in __do_execute
+    return await executor(protocol)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 205, in bind_execute
+asyncpg.exceptions.ForeignKeyViolationError: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
 
-[Тест 2] Симуляция открытия Тир-3 (VIP-юзер):
-Результат: Успех=True, Название=Тир-3 (1000 БК), Шаг=4, Награда=656 AL
+The above exception was the direct cause of the following exception:
 
-[Тест 3] Проверка защиты от лимитов (Попытка №6 при лимите 6):
-Результат: Успех=False, Ошибка='Лимит исчерпан! Вы открыли максимум (6 боксов) за этот стрим.'
+Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.IntegrityError: <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
 
-✅ ВСЕ ТЕСТЫ УСПЕШНО ПРОЙДЕНЫ! СИСТЕМА СТАБИЛЬНА.  
+The above exception was the direct cause of the following exception:
 
+Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\src\workers\chat.py", line 146, in start
+    progress = await UserDatabaseService.process_chat_activity(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        session=session, vk_id=vk_id, username=username, channel_id=self.mock_channel_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\src\services\user_db.py", line 57, in process_chat_activity
+    await session.flush()
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 786, in flush
+    await greenlet_spawn(self.sync_session.flush, objects=objects)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 465, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.IntegrityError: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
+[SQL: INSERT INTO user_channel_progress (vk_id, channel_id, ac_balance, is_vip, visit_streak, last_stream_id, last_active_at) VALUES ($1::BIGINT, $2::BIGINT, $3::INTEGER, $4::BOOLEAN, $5::INTEGER, $6::INTEGER, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING user_channel_progress.id]
+[parameters: (20084797, 888888, 0, False, 0, 0, datetime.datetime(2026, 9, 14, 20, 14, 16, 694398))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: хз | Слов: 1
+ERROR:SyndicateChatWorker:❌ КРИТИЧЕСКАЯ ОШИБКА ПАРСИНГА ПАКЕТА: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
+[SQL: INSERT INTO user_channel_progress (vk_id, channel_id, ac_balance, is_vip, visit_streak, last_stream_id, last_active_at) VALUES ($1::BIGINT, $2::BIGINT, $3::INTEGER, $4::BOOLEAN, $5::INTEGER, $6::INTEGER, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING user_channel_progress.id]
+[parameters: (20084797, 888888, 0, False, 0, 0, datetime.datetime(2026, 9, 14, 20, 14, 26, 524110))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+ERROR:SyndicateChatWorker:Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 550, in _prepare_and_execute
+    self._rows = deque(await prepared_stmt.fetch(*parameters))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 177, in fetch
+    data = await self.__bind_execute(args, 0, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 268, in __bind_execute
+    data, status, _ = await self.__do_execute(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda protocol: protocol.bind_execute(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            self._state, args, '', limit, True, timeout))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 257, in __do_execute
+    return await executor(protocol)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 205, in bind_execute
+asyncpg.exceptions.ForeignKeyViolationError: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.IntegrityError: <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\src\workers\chat.py", line 146, in start
+    progress = await UserDatabaseService.process_chat_activity(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        session=session, vk_id=vk_id, username=username, channel_id=self.mock_channel_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\src\services\user_db.py", line 57, in process_chat_activity
+    await session.flush()
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 786, in flush
+    await greenlet_spawn(self.sync_session.flush, objects=objects)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 465, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.IntegrityError: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "user_channel_progress" нарушает ограничение внешнего ключа "user_channel_progress_channel_id_fkey"
+DETAIL:  Ключ (channel_id)=(888888) отсутствует в таблице "streamer_channels".
+[SQL: INSERT INTO user_channel_progress (vk_id, channel_id, ac_balance, is_vip, visit_streak, last_stream_id, last_active_at) VALUES ($1::BIGINT, $2::BIGINT, $3::INTEGER, $4::BOOLEAN, $5::INTEGER, $6::INTEGER, $7::TIMESTAMP WITHOUT TIME ZONE) RETURNING user_channel_progress.id]
+[parameters: (20084797, 888888, 0, False, 0, 0, datetime.datetime(2026, 9, 14, 20, 14, 26, 524110))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+
+Тест чата успешно завершен.
+(.venv) PS D:\__projects\!chat_bot__live_vkvideo_ru> python main.py --test-chat
+INFO:SyndicateChatTest:=== ЗАПУСК БОЕВОГО MVP-ТЕСТА ЧАТ-ВОРКЕРА ===
+INFO:SyndicateChatTest:-> Синхронизация таблиц БД...
+INFO:SyndicateChatTest:-> Инициализация тестового стримера 888888 в PostgreSQL...
+INFO:SyndicateChatTest:✅ Тестовый стример успешно добавлен в СУБД.
+INFO:SyndicateChatTest:🔥 Воркер запускается. Начинаем слушать живой чат стрима...
+INFO:SyndicateChatWorker:🔌 Подключение напрямую к сокету: wss://pubsub.live.vkvideo.ru/connection/websocket?cf_protocol_version=v2
+INFO:SyndicateChatWorker:🔐 Авторизация на сервере Centrifugo успешна.
+INFO:SyndicateChatWorker:✅ Успешно подписались на топик чата: channel-chat:12275881
+INFO:SyndicateChatWorker:🔥 Начинаем бесконечный сбор живых сообщений стрима...
+INFO:SyndicateChatWorker:⚙️ Обработка БД для хelkon | Текст: лудка | Слов: 1
+ERROR:SyndicateChatWorker:❌ КРИТИЧЕСКАЯ ОШИБКА ПАРСИНГА ПАКЕТА: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "lootbox_logs" нарушает ограничение внешнего ключа "lootbox_logs_session_id_fkey"
+DETAIL:  Ключ (session_id)=(1) отсутствует в таблице "stream_sessions".
+[SQL: INSERT INTO lootbox_logs (vk_id, channel_id, session_id, box_type, step_reached, is_exploded, reward_al, opened_at) VALUES ($1::BIGINT, $2::BIGINT, $3::INTEGER, $4::VARCHAR, $5::INTEGER, $6::BOOLEAN, $7::INTEGER, $8::TIMESTAMP WITHOUT TIME ZONE) RETURNING lootbox_logs.id]
+[parameters: (33615136, 888888, 1, 'cheap', 2, True, 150, datetime.datetime(2026, 9, 14, 20, 17, 8, 345148))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+ERROR:SyndicateChatWorker:Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 550, in _prepare_and_execute
+    self._rows = deque(await prepared_stmt.fetch(*parameters))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 177, in fetch
+    data = await self.__bind_execute(args, 0, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 268, in __bind_execute
+    data, status, _ = await self.__do_execute(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda protocol: protocol.bind_execute(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            self._state, args, '', limit, True, timeout))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 257, in __do_execute
+    return await executor(protocol)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 205, in bind_execute
+asyncpg.exceptions.ForeignKeyViolationError: INSERT или UPDATE в таблице "lootbox_logs" нарушает ограничение внешнего ключа "lootbox_logs_session_id_fkey"
+DETAIL:  Ключ (session_id)=(1) отсутствует в таблице "stream_sessions".
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.IntegrityError: <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "lootbox_logs" нарушает ограничение внешнего ключа "lootbox_logs_session_id_fkey"
+DETAIL:  Ключ (session_id)=(1) отсутствует в таблице "stream_sessions".
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\src\workers\chat.py", line 163, in start
+    await session.commit()
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 999, in commit
+    await greenlet_spawn(self.sync_session.commit)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2035, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1316, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1290, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4353, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4449, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 465, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        insert,
+        ^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+        statement,
+        params,
+        execution_options=execution_options,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 585, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 563, in _prepare_and_execute
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 513, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\__projects\!chat_bot__live_vkvideo_ru\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 797, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.IntegrityError: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "lootbox_logs" нарушает ограничение внешнего ключа "lootbox_logs_session_id_fkey"
+DETAIL:  Ключ (session_id)=(1) отсутствует в таблице "stream_sessions".
+[SQL: INSERT INTO lootbox_logs (vk_id, channel_id, session_id, box_type, step_reached, is_exploded, reward_al, opened_at) VALUES ($1::BIGINT, $2::BIGINT, $3::INTEGER, $4::VARCHAR, $5::INTEGER, $6::BOOLEAN, $7::INTEGER, $8::TIMESTAMP WITHOUT TIME ZONE) RETURNING lootbox_logs.id]
+[parameters: (33615136, 888888, 1, 'cheap', 2, True, 150, datetime.datetime(2026, 9, 14, 20, 17, 8, 345148))]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+
+Тест чата успешно завершен.
+(.venv) PS D:\__projects\!chat_bot__live_vkvideo_ru> python main.py --test-chat
+INFO:SyndicateChatTest:=== ЗАПУСК БОЕВОГО MVP-ТЕСТА ЧАТ-ВОРКЕРА ===
+INFO:SyndicateChatTest:-> Синхронизация таблиц БД...
+INFO:SyndicateChatTest:-> Инициализация тестовой сессии стрима №1 в PostgreSQL...
+INFO:SyndicateChatTest:✅ Вся тестовая инфраструктура СУБД готова к приему данных.
+INFO:SyndicateChatTest:🔥 Воркер запускается. Начинаем слушать живой чат стрима...
+INFO:SyndicateChatWorker:🔌 Подключение напрямую к сокету: wss://pubsub.live.vkvideo.ru/connection/websocket?cf_protocol_version=v2
+INFO:SyndicateChatWorker:🔐 Авторизация на сервере Centrifugo успешна.
+INFO:SyndicateChatWorker:✅ Успешно подписались на топик чата: channel-chat:12275881
+INFO:SyndicateChatWorker:🔥 Начинаем бесконечный сбор живых сообщений стрима...
+INFO:SyndicateChatWorker:⚙️ Обработка БД для donstasoon | Текст: максимально удачный | Слов: 2
+INFO:SyndicateChatWorker:💬 [donstasoon | ID: 17529800]: максимально удачный... -> Удача: cheap (Шаг 3/6) -> +220 AL (Баланс: 220)
+WARNING:SyndicateChatWorker:⚠️ Пакет содержит пустой vk_id для пользователя Танкист
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Positiv Fire | Текст: [Смайл] [Смайл] [Сма | Слов: 3
+INFO:SyndicateChatWorker:💬 [Positiv Fire | ID: 20621518]: [Смайл] [Смайл] [Смайл]... -> Удача: normal (Шаг 0/6) -> +0 AL (Баланс: 0)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для donstasoon | Текст: арта просто тушит бы | Слов: 6
+INFO:SyndicateChatWorker:💬 [donstasoon | ID: 17529800]: арта просто тушит бычки об тебя... -> Удача: elite (Шаг 2/6) -> +187 AL (Баланс: 407)
+WARNING:SyndicateChatWorker:⚠️ Пакет содержит пустой vk_id для пользователя Танкист
+INFO:SyndicateChatWorker:⚙️ Обработка БД для NiKoLaiCH_1995 | Текст: у игры ведь написано | Слов: 6
+INFO:SyndicateChatWorker:💬 [NiKoLaiCH_1995 | ID: 18245892]: у игры ведь написано боги игры... -> Удача: elite (Шаг 4/6) -> +437 AL (Баланс: 437)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Александр Соколов#703893 | Текст: а как ты только что  | Слов: 11
+INFO:SyndicateChatWorker:💬 [Александр Соколов#703893 | ID: 19866038]: а как ты только что в натиске был а каже... -> Удача: elite (Шаг 5/6) -> +687 AL (Баланс: 687)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: а сможешь дать роль  | Слов: 11
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: а сможешь дать роль властелин колец? у м... -> Удача: elite (Шаг 5/6) -> +687 AL (Баланс: 687)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Вова А777МР97 | Текст: [Смайл] | Слов: 1
+INFO:SyndicateChatWorker:💬 [Вова А777МР97 | ID: 18415889]: [Смайл]... -> Удача: cheap (Шаг 4/6) -> +350 AL (Баланс: 350)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Александр Соколов#703893 | Текст: с левшой | Слов: 2
+INFO:SyndicateChatWorker:💬 [Александр Соколов#703893 | ID: 19866038]: с левшой... -> Удача: cheap (Шаг 1/6) -> +100 AL (Баланс: 787)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: о, вернулся! | Слов: 2
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: о, вернулся!... -> Удача: cheap (Шаг 1/6) -> +100 AL (Баланс: 787)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Душный Гонсалес | Текст: это нир с ним попал | Слов: 5
+INFO:SyndicateChatWorker:💬 [Душный Гонсалес | ID: 20260233]: это нир с ним попал... -> Удача: elite (Шаг 5/6) -> +687 AL (Баланс: 687)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Александр Соколов#703893 | Текст: я понял | Слов: 2
+INFO:SyndicateChatWorker:💬 [Александр Соколов#703893 | ID: 19866038]: я понял... -> Удача: cheap (Шаг 2/6) -> +150 AL (Баланс: 937)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Вова А777МР97 | Текст: да я на работе, пере | Слов: 6
+INFO:SyndicateChatWorker:💬 [Вова А777МР97 | ID: 18415889]: да я на работе, переодически захожу:)... -> Удача: elite (Шаг 1/6) -> +125 AL (Баланс: 475)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: ааа | Слов: 1
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: ааа... -> Удача: cheap (Шаг 4/6) -> +350 AL (Баланс: 1137)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для XopoLLluU_MaJlb4uK | Текст: посмотри как джов сы | Слов: 23
+INFO:SyndicateChatWorker:💬 [XopoLLluU_MaJlb4uK | ID: 12294624]: посмотри как джов сыграл на границе импе... -> Удача: elite (Шаг 2/6) -> +187 AL (Баланс: 187)
+WARNING:SyndicateChatWorker:⚠️ Пакет содержит пустой vk_id для пользователя Танкист
+INFO:SyndicateChatWorker:⚙️ Обработка БД для aJlusa | Текст: может рольку купить | Слов: 3
+INFO:SyndicateChatWorker:💬 [aJlusa | ID: 18429685]: может рольку купить... -> Удача: normal (Шаг 1/6) -> +110 AL (Баланс: 110)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Александр Соколов#703893 | Текст: странно просто захож | Слов: 8
+INFO:SyndicateChatWorker:💬 [Александр Соколов#703893 | ID: 19866038]: странно просто захожу стрим клумбы а там... -> Удача: elite (Шаг 3/6) -> +275 AL (Баланс: 1212)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: мы с тобой так и не  | Слов: 24
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: мы с тобой так и не обсудили) давай обме... -> Удача: elite (Шаг 3/6) -> +275 AL (Баланс: 1412)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для хelkon | Текст: сдох? | Слов: 1
+INFO:SyndicateChatWorker:💬 [хelkon | ID: 33615136]: сдох?... -> Удача: cheap (Шаг 2/6) -> +150 AL (Баланс: 150)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Андрей Темных | Текст: а где кёниг | Слов: 3
+INFO:SyndicateChatWorker:💬 [Андрей Темных | ID: 19251211]: а где кёниг... -> Удача: normal (Шаг 4/6) -> +385 AL (Баланс: 385)
+WARNING:SyndicateChatWorker:⚠️ Пакет содержит пустой vk_id для пользователя Танкист
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Вова А777МР97 | Текст: да ладно хахахаха | Слов: 3
+INFO:SyndicateChatWorker:💬 [Вова А777МР97 | ID: 18415889]: да ладно хахахаха... -> Удача: normal (Шаг 2/6) -> +165 AL (Баланс: 640)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для ChatBot | Текст: 💵 Поддержать стример | Слов: 3
+INFO:SyndicateChatWorker:💬 [ChatBot | ID: 12529926]: 💵 Поддержать стримера:... -> Удача: normal (Шаг 2/6) -> +165 AL (Баланс: 165)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: ахахаххаха | Слов: 1
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: ахахаххаха... -> Удача: cheap (Шаг 4/6) -> +350 AL (Баланс: 1762)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Вова А777МР97 | Текст: завтра обсудим:) пок | Слов: 10
+INFO:SyndicateChatWorker:💬 [Вова А777МР97 | ID: 18415889]: завтра обсудим:) пока некогда, да и влад... -> Удача: elite (Шаг 4/6) -> +437 AL (Баланс: 1077)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для XopoLLluU_MaJlb4uK | Текст: я полчаса ржал,у нег | Слов: 11
+INFO:SyndicateChatWorker:💬 [XopoLLluU_MaJlb4uK | ID: 12294624]: я полчаса ржал,у него до эього средуха н... -> Удача: elite (Шаг 2/6) -> +187 AL (Баланс: 374)
+WARNING:SyndicateChatWorker:⚠️ Пакет содержит пустой vk_id для пользователя Танкист
+INFO:SyndicateChatWorker:⚙️ Обработка БД для AHТАР | Текст: отдался | Слов: 1
+INFO:SyndicateChatWorker:💬 [AHТАР | ID: 29600405]: отдался... -> Удача: cheap (Шаг 4/6) -> +350 AL (Баланс: 350)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: ну давай давай) | Слов: 3
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: ну давай давай)... -> Удача: normal (Шаг 5/6) -> +605 AL (Баланс: 2367)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Андрей Темных | Текст: какой стрим 🤣 | Слов: 3
+INFO:SyndicateChatWorker:💬 [Андрей Темных | ID: 19251211]: какой стрим 🤣... -> Удача: normal (Шаг 1/6) -> +110 AL (Баланс: 495)
+WARNING:SyndicateChatWorker:⚠️ Пакет содержит пустой vk_id для пользователя Танкист
+INFO:SyndicateChatWorker:⚙️ Обработка БД для AHТАР | Текст: кумуль лучше подкали | Слов: 5
+INFO:SyndicateChatWorker:💬 [AHТАР | ID: 29600405]: кумуль лучше подкалибера (с) корбен... -> Удача: elite (Шаг 3/6) -> +275 AL (Баланс: 625)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Вова А777МР97 | Текст: надо глянуть) границ | Слов: 6
+INFO:SyndicateChatWorker:💬 [Вова А777МР97 | ID: 18415889]: надо глянуть) граница империи понял хаха... -> Удача: elite (Шаг 3/6) -> +275 AL (Баланс: 1352)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: я вроде и не тороплю | Слов: 11
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: я вроде и не тороплюсь но я боюсь что он... -> Удача: elite (Шаг 2/6) -> +187 AL (Баланс: 2554)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для 3-Dirty_schoolboy-2 | Текст: всем привет) валерин | Слов: 6
+INFO:SyndicateChatWorker:💬 [3-Dirty_schoolboy-2 | ID: 12327375]: всем привет) валерина дама сердца появля... -> Удача: elite (Шаг 5/6) -> +687 AL (Баланс: 687)
+WARNING:SyndicateChatWorker:⚠️ Пакет содержит пустой vk_id для пользователя Танкист
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Вова А777МР97 | Текст: какая? надеюсь ниче  | Слов: 5
+INFO:SyndicateChatWorker:💬 [Вова А777МР97 | ID: 18415889]: какая? надеюсь ниче не пропадёт... -> Удача: elite (Шаг 6/6) -> +1250 AL (Баланс: 2602)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для ChatBot | Текст: получает награду: Бл | Слов: 7
+INFO:SyndicateChatWorker:💬 [ChatBot | ID: 12529926]: получает награду: Благодарность за Стрим... -> Удача: elite (Шаг 1/6) -> +125 AL (Баланс: 290)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для XopoLLluU_MaJlb4uK | Текст: там оббоссаться можн | Слов: 4
+INFO:SyndicateChatWorker:💬 [XopoLLluU_MaJlb4uK | ID: 12294624]: там оббоссаться можно ))... -> Удача: normal (Шаг 2/6) -> +165 AL (Баланс: 539)
+WARNING:SyndicateChatWorker:⚠️ Пакет содержит пустой vk_id для пользователя Танкист
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: ну расправил усы или | Слов: 6
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: ну расправил усы или властелин колец... -> Удача: elite (Шаг 2/6) -> +187 AL (Баланс: 2741)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для ChatBot | Текст: 👑 ТЕЛЕГРАМ КАНАЛ - | Слов: 4
+INFO:SyndicateChatWorker:💬 [ChatBot | ID: 12529926]: 👑 ТЕЛЕГРАМ КАНАЛ -... -> Удача: normal (Шаг 3/6) -> +242 AL (Баланс: 532)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для Вова А777МР97 | Текст: да не пропадут, поче | Слов: 8
+INFO:SyndicateChatWorker:💬 [Вова А777МР97 | ID: 18415889]: да не пропадут, почему такое мнение, что... -> Удача: elite (Шаг 1/6) -> +125 AL (Баланс: 2727)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для AHТАР | Текст: интересно, что мт58  | Слов: 4
+INFO:SyndicateChatWorker:💬 [AHТАР | ID: 29600405]: интересно, что мт58 хотел?... -> Удача: normal (Шаг 3/6) -> +242 AL (Баланс: 867)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для GreySkyL1Ne | Текст: ну хз, роли давно, м | Слов: 11
+INFO:SyndicateChatWorker:💬 [GreySkyL1Ne | ID: 20084797]: ну хз, роли давно, мб будут старые убира... -> Удача: elite (Шаг 2/6) -> +187 AL (Баланс: 2928)
+INFO:SyndicateChatWorker:⚙️ Обработка БД для хelkon | Текст: А МЫ ЧО ЗНАЕМ ГДЕ ЭТ | Слов: 8
+INFO:SyndicateChatWorker:💬 [хelkon | ID: 33615136]: А МЫ ЧО ЗНАЕМ ГДЕ ЭТИ БАКИ КСТЬ?... -> Удача: elite (Шаг 2/6) -> +187 AL (Баланс: 337)
+
+Тест чата успешно завершен.
+(.venv) PS D:\__projects\!chat_bot__live_vkvideo_ru> 
